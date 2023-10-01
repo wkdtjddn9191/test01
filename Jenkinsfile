@@ -103,7 +103,6 @@ pipeline {
           echo " steps finished"
       }
       post {
-        echo " post started"
         failure {
           echo 'K8S Manifest Update failure'
           slackSend (color: '#FF0000', message: "FAILED: K8S Manifest Update '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
