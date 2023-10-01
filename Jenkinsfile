@@ -91,11 +91,11 @@ pipeline {
               url: "https://github.com/wkdtjddn9191/test01.git",
               branch: 'main'
           
-          sh "git config --global user.email ${gitemail}"
+         sh "git config --global user.email ${gitEmail}"
           sh "git config --global user.name ${gitName}"
-          sh "sed -i 's/tomcat:${currentBuild.number}/g' deploy/production.yaml"
+          sh "sed -i 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
           sh "git add ."
-          sh "git commit -m 'fix${dockerHubRegistry} ${currentBuild.number} image versioning"
+          sh "git commit -m 'fix:${dockerHubRegistry} ${currentBuild.number} image versioning'"
           sh "git branch -M main"
           sh "git remote remove origin"
           sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
