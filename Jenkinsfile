@@ -88,7 +88,7 @@ pipeline {
     stage('K8s Manifest Update'){
       steps {
           git credentialsId: githubCredential,
-              url: "https://github.com/wkdtjddn9191/test01.git"
+              url: "https://github.com/wkdtjddn9191/test01.git",
               branch: 'main'
           
           sh "git config --global user.email ${gitemail}"
