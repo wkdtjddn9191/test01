@@ -2,18 +2,17 @@ pipeline {
   agent any
   tools {
     maven 'Maven3' 
-    }
-    
-    environment {
-      dockerHubRegistry = "sungwoojang/test"
-      dockerHubRegistryCredential = "docker"
-      githubCredential = 'git_hub'
-      gitEmail = 'wkdtjddn9191@gmail.com'
-      gitName = 'wkdtjddn9191'
-    }
-    stages {
+  }
+  
+  environment {
+    dockerHubRegistry = "sungwoojang/test"
+    dockerHubRegistryCredential = "docker"
+    githubCredential = 'git_hub'
+    gitEmail = 'wkdtjddn9191@gmail.com'
+    gitName = 'wkdtjddn9191'
+  }
    
-    stages {
+  stages {
    
     stage('Checkout Application Git Branch') {
       steps {
@@ -42,7 +41,8 @@ pipeline {
         }
       }
     }
-     
+
+    
     stage('Docker Image Build') {
       steps {
         sh "docker build . -t ${dockerHubRegistry}:${currentBuild.number}"
@@ -59,6 +59,7 @@ pipeline {
         }
       }
     }  
+    
     stage('Docker Image Push') {
       steps {
         withDockerRegistry(credentialsId: dockerHubRegistryCredential, url: '') {
@@ -83,22 +84,23 @@ pipeline {
         }
       }
     }
-        stage('K8s Manifest Update'){
-            steps {
-                git credentialsId: githubCredential,
-                    url: "https://github.com/wkdtjddn9191/test01.git"
-                    branch: 'main'
-                
-                sh "git config --global user.email ${gitemail}"
-                sh "git config --global user.name ${gitName}"
-                sh "sed -i 's/tomcat:${currentBuild.number}/g' deploy/production.yaml"
-                sh "git add ."
-                sh "git commit -m 'fix${dockerHubRegistry} ${currentBuild.number} image versioning"
-                sh "git branch -M main"
-                sh "git remote remove origin"
-                sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
-                sh "git push -u origin main"
-            }
+    
+    stage('K8s Manifest Update'){
+      steps {
+          git credentialsId: githubCredential,
+              url: "https://github.com/wkdtjddn9191/test01.git"
+              branch: 'main'
+          
+          sh "git config --global user.email ${gitemail}"
+          sh "git config --global user.name ${gitName}"
+          sh "sed -i 's/tomcat:${currentBuild.number}/g' deploy/production.yaml"
+          sh "git add ."
+          sh "git commit -m 'fix${dockerHubRegistry} ${currentBuild.number} image versioning"
+          sh "git branch -M main"
+          sh "git remote remove origin"
+          sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
+          sh "git push -u origin main"
+      }
       post {
         failure {
           echo 'K8S Manifest Update failure'
