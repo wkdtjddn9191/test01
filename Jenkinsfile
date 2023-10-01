@@ -100,8 +100,10 @@ pipeline {
           sh "git remote remove origin"
           sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
           sh "git push -u origin main"
+          echo " steps finished"
       }
       post {
+        echo " post started"
         failure {
           echo 'K8S Manifest Update failure'
           slackSend (color: '#FF0000', message: "FAILED: K8S Manifest Update '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
