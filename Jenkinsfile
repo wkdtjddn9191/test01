@@ -16,7 +16,7 @@ pipeline {
             
         stage('Checkout Application Git Branch') {
             steps {
-                checkout([$class: 'GitSCM')
+                checkout('GitSCM')
             }
             post {
                 failure {
