@@ -37,7 +37,7 @@ managedNodeGroups:
     minSize: 1
     desiredCapacity: 2
     labels: { role: production }
-    maxSize: 3
+    maxSize: 2
     privateNetworking: true
     ssh:
       allow: true
