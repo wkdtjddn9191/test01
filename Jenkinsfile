@@ -16,7 +16,7 @@ pipeline {
             
         stage('Checkout Application Git Branch') {
             steps {
-                checkout(class: 'GitSCM', branches: [[name: '*main']], extensions:[],userRemoteCo]]])
+                checkout([$class: 'GitSCM', branches: [[name: '*main']], extensions:[],userRemoteCo])
             }
             post {
                 failure {
