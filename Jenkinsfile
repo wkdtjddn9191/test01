@@ -100,7 +100,6 @@ pipeline {
           sh "git remote remove origin"
           sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
           sh "git push -u origin main"
-          echo " steps finished"
       }
       post {
         failure {
