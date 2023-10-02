@@ -15,15 +15,6 @@ spec:
       labels:
         role: production
     spec:
-      affinity: 
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - production
       containers:
         - name: myweb
           image: how0326/tomcat:35
