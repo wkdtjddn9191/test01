@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: myweb-ing
   annotations:
-    kubernetes.io/ingress.class: alb
+    kubernetes.io/ingress.class: clb
     alb.ingress.kubernetes.io/target-type: instance
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
