@@ -90,7 +90,8 @@ pipeline {
          git credentialsId: githubCredential,
               url: "https://github.com/wkdtjddn9191/test01.git",
               branch: 'main'
-          
+
+         sh "git init"
          sh "git config --global user.email 'wkdtjddn9191@gmail.com'"
          sh "git config --global user.name 'wkdtjddn9191'"
          sh "sed 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
