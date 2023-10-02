@@ -98,8 +98,6 @@ pipeline {
          sh "git add ."
          sh "git commit -m 'initialing version'"
          sh "git branch -M main"
-         sh "git remote remove origin"
-         sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
          sh "git push -u origin main"
       }
       post {
