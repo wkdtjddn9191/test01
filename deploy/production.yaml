@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: myweb
-          image: sungwoojang/test:36
+          image: sungwoojang/test:39
           ports:
             - containerPort: 8085
             
