@@ -91,14 +91,13 @@ pipeline {
               url: "https://github.com/wkdtjddn9191/test01.git",
               branch: 'main'
           
-         sh "git config --global user.email ${gitEmail}"
-          sh "git config --global user.name ${gitName}"
-          sh "sed 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
-          sh "git add ."
-          sh "git branch -M main"
-          sh "git remote remove origin"
-          sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
-          sh "git push -u origin main"
+         sh "git config --global user.email 'wkdtjddn9191@gmail.com'"
+         sh "git config --global user.name 'wkdtjddn9191'"
+         sh "sed 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
+         sh "git add ."
+         sh "git branch -M main"
+         sh "git commit -m 'initialing version'"
+         sh "git push -u origin main"
       }
       post {
         failure {
