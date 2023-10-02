@@ -34,7 +34,7 @@ managedNodeGroups:
   # On-Demand Instance
   - name: production
     instanceType: t2.medium
-    minSize: 1
+    minSize: 2
     desiredCapacity: 2
     labels: { role: production }
     maxSize: 2
