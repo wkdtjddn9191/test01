@@ -95,7 +95,6 @@ pipeline {
           sh "git config --global user.name ${gitName}"
           sh "sed 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
           sh "git add ."
-          sh "git commit -m 'image versioning'"
           sh "git branch -M main"
           sh "git remote remove origin"
           sh "git remote add origin git@github.com:wkdtjddn9191/test01.git"
