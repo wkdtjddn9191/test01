@@ -92,7 +92,7 @@ pipeline {
               branch: 'main'
          sh "git config --global user.email 'wkdtjddn9191@gmail.com'"
          sh "git config --global user.name 'wkdtjddn9191'"
-         sh "sed -i 's/tomcat:.*/tomcat:${currentBuild.number}/g' deploy/production.yaml"
+         sh "sed -i 's/sungwoojang:.*/sunwoojang\/\test:${currentBuild.number}/g' deploy/production.yaml"
          sh "git add ."
          sh "git commit -m 'initialing version'"
          sh "git branch -M main"
