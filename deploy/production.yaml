@@ -26,7 +26,7 @@ spec:
                 - production
       containers:
         - name: myweb
-          image: how0326/tomcat:6
+          image: how0326/tomcat:25
           ports:
             - containerPort: 8085
             
